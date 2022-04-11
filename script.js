@@ -5,15 +5,15 @@ const quadrado = {
   detalhes: {
     cor: "#77BFA3",
     background: "",
-    valor: "",
   },
 };
 
 const partida = {
   numeroDeJogadas: 0,
-  numeroDeJogadasPar: 0,
-  numeroDeJogadasImpar: 0,
+  numeroDeJogadasPar_O: 0,
+  numeroDeJogadasImpar_X: 0,
   status: "",
+  vencedor: "",
 };
 
 const sequencia_ids_jogadas_impar = [];
@@ -33,13 +33,19 @@ const vitoriasPossiveis = [
 function SelecionarQuadrado(id) {
   const quadradoSelecionadoDOM = document.getElementById(id);
   const jogadorSelecionadoDOM = document.getElementById("jogador");
-  quadrado.selecionado = true;
+  const partidaDOM = document.getElementById("partida");
+  const partidaImparDOM = document.getElementById("partida-impar-x");
+  const partidaParDOM = document.getElementById("partida-par-o");
+  partida.vencedor === ""
+    ? (quadrado.selecionado = true)
+    : (quadrado.selecionado = false);
   quadrado.valoresId.push(id);
-  partida.numeroDeJogadas += 1;
+  partida.vencedor === "" ? (partida.numeroDeJogadas += 1) : Reset();
   partida.status = "iniciada";
+  partidaDOM.innerHTML = partida.numeroDeJogadas;
 
   // jogador O
-  if (partida.numeroDeJogadas % 2 == 0) {
+  if (partida.numeroDeJogadas % 2 == 0 && quadrado.selecionado === true) {
     quadrado.detalhes.valor = "par";
     quadrado.detalhes.cor = quadradoSelecionadoDOM.style.color =
       quadrado.esquemaDeCores[1];
@@ -52,12 +58,14 @@ function SelecionarQuadrado(id) {
       ? (sequencia_ids_jogadas_par.length = 0)
       : sequencia_ids_jogadas_par.push(id);
     sequencia_ids_jogadas_par.sort();
-    partida.numeroDeJogadasPar += 1;
+    partida.numeroDeJogadasPar_O += 1;
+    partidaParDOM.innerHTML = partida.numeroDeJogadasPar_O;
+
     VerificaSeVence("par");
   }
 
   // jogador X
-  if (partida.numeroDeJogadas % 2 != 0) {
+  if (partida.numeroDeJogadas % 2 != 0 && quadrado.selecionado === true) {
     quadrado.detalhes.valor = "impar";
     quadrado.detalhes.cor = quadradoSelecionadoDOM.style.color =
       quadrado.esquemaDeCores[2];
@@ -70,12 +78,14 @@ function SelecionarQuadrado(id) {
       ? (sequencia_ids_jogadas_impar.length = 0)
       : sequencia_ids_jogadas_impar.push(id);
     sequencia_ids_jogadas_impar.sort();
-    partida.numeroDeJogadasImpar += 1;
+    partida.numeroDeJogadasImpar_X += 1;
+    partidaImparDOM.innerHTML = partida.numeroDeJogadasImpar_X;
+
     VerificaSeVence("impar");
   }
 }
 
-function PossibilidadesVitoriaImpar() {
+function PossibilidadesVitoriaImpar_X() {
   for (let i = 0; i < vitoriasPossiveis.length; i++) {
     for (let j = 0; j < vitoriasPossiveis[i].length; j++) {
       if (
@@ -93,7 +103,7 @@ function PossibilidadesVitoriaImpar() {
             sequencia_ids_jogadas_impar[3] === vitoriasPossiveis[i][2] ||
             sequencia_ids_jogadas_impar[4] === vitoriasPossiveis[i][2]
           ) {
-            return (partida.status = "finalizada impar");
+            return (partida.status = "finalizada X");
           }
         }
       }
@@ -101,7 +111,7 @@ function PossibilidadesVitoriaImpar() {
   }
 }
 
-function PossibilidadesVitoriaPar() {
+function PossibilidadesVitoriaPar_O() {
   for (let i = 0; i < vitoriasPossiveis.length; i++) {
     for (let j = 0; j < vitoriasPossiveis[i].length; j++) {
       if (
@@ -119,7 +129,7 @@ function PossibilidadesVitoriaPar() {
             sequencia_ids_jogadas_par[3] === vitoriasPossiveis[i][2] ||
             sequencia_ids_jogadas_par[4] === vitoriasPossiveis[i][2]
           ) {
-            return (partida.status = "finalizada par");
+            return (partida.status = "finalizada O");
           }
         }
       }
@@ -129,25 +139,29 @@ function PossibilidadesVitoriaPar() {
 
 function VerificaSeVence(jogador) {
   if (jogador === "impar") {
-    PossibilidadesVitoriaImpar();
-    partida.status === "finalizada impar"
-      ? (document.getElementById("vencedor").innerHTML = "X")
+    PossibilidadesVitoriaImpar_X();
+    partida.status === "finalizada X"
+      ? (document.getElementById("vencedor").innerHTML = "X") &&
+        (partida.vencedor = "X")
       : null;
   }
 
   if (jogador === "par") {
-    PossibilidadesVitoriaPar();
-    partida.status === "finalizada par"
-      ? (document.getElementById("vencedor").innerHTML = "O")
+    PossibilidadesVitoriaPar_O();
+    partida.status === "finalizada O"
+      ? (document.getElementById("vencedor").innerHTML = "O") &&
+        (partida.vencedor = "O")
       : null;
   }
 }
 
 function Reset() {
   quadrado.valoresId = [];
+  quadrado.selecionado = false;
   partida.numeroDeJogadas = 0;
-  partida.numeroDeJogadasPar = 0;
-  partida.numeroDeJogadasImpar = 0;
+  partida.numeroDeJogadasPar_O = 0;
+  partida.numeroDeJogadasImpar_X = 0;
+  partida.vencedor = "";
   sequencia_ids_jogadas_impar.length = 0;
   sequencia_ids_jogadas_par.length = 0;
   const colecaoQuadradosDOM = document.getElementsByClassName("quadrado");

@@ -1,2 +1,2 @@
 # xo-tic-tac-toe
-desafio do bootcamp orbi web games developer 👾
+desafio do bootcamp DIO órbi web games developer 👾

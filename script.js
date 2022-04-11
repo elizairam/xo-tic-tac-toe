@@ -75,7 +75,7 @@ function SelecionarQuadrado(id) {
   }
 }
 
-function VerificaVitoriaImpar() {
+function PossibilidadesVitoriaImpar() {
   for (let i = 0; i < vitoriasPossiveis.length; i++) {
     for (let j = 0; j < vitoriasPossiveis[i].length; j++) {
       if (
@@ -101,7 +101,7 @@ function VerificaVitoriaImpar() {
   }
 }
 
-function verificaVitoriaPar() {
+function PossibilidadesVitoriaPar() {
   for (let i = 0; i < vitoriasPossiveis.length; i++) {
     for (let j = 0; j < vitoriasPossiveis[i].length; j++) {
       if (
@@ -129,14 +129,14 @@ function verificaVitoriaPar() {
 
 function VerificaSeVence(jogador) {
   if (jogador === "impar") {
-    VerificaVitoriaImpar();
+    PossibilidadesVitoriaImpar();
     partida.status === "finalizada impar"
       ? (document.getElementById("vencedor").innerHTML = "X")
       : null;
   }
 
   if (jogador === "par") {
-    verificaVitoriaPar();
+    PossibilidadesVitoriaPar();
     partida.status === "finalizada par"
       ? (document.getElementById("vencedor").innerHTML = "O")
       : null;

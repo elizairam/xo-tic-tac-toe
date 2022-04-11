@@ -165,24 +165,11 @@ function Reset() {
   sequencia_ids_jogadas_impar.length = 0;
   sequencia_ids_jogadas_par.length = 0;
   const colecaoQuadradosDOM = document.getElementsByClassName("quadrado");
-  colecaoQuadradosDOM[0].style.background = quadrado.esquemaDeCores[0];
-  colecaoQuadradosDOM[0].style.color = quadrado.esquemaDeCores[0];
-  colecaoQuadradosDOM[1].style.background = quadrado.esquemaDeCores[0];
-  colecaoQuadradosDOM[1].style.color = quadrado.esquemaDeCores[0];
-  colecaoQuadradosDOM[2].style.background = quadrado.esquemaDeCores[0];
-  colecaoQuadradosDOM[2].style.color = quadrado.esquemaDeCores[0];
-  colecaoQuadradosDOM[3].style.background = quadrado.esquemaDeCores[0];
-  colecaoQuadradosDOM[3].style.color = quadrado.esquemaDeCores[0];
-  colecaoQuadradosDOM[4].style.background = quadrado.esquemaDeCores[0];
-  colecaoQuadradosDOM[4].style.color = quadrado.esquemaDeCores[0];
-  colecaoQuadradosDOM[5].style.background = quadrado.esquemaDeCores[0];
-  colecaoQuadradosDOM[5].style.color = quadrado.esquemaDeCores[0];
-  colecaoQuadradosDOM[6].style.background = quadrado.esquemaDeCores[0];
-  colecaoQuadradosDOM[6].style.color = quadrado.esquemaDeCores[0];
-  colecaoQuadradosDOM[7].style.background = quadrado.esquemaDeCores[0];
-  colecaoQuadradosDOM[7].style.color = quadrado.esquemaDeCores[0];
-  colecaoQuadradosDOM[8].style.background = quadrado.esquemaDeCores[0];
-  colecaoQuadradosDOM[8].style.color = quadrado.esquemaDeCores[0];
+
+    for (let i = 0; i < colecaoQuadradosDOM.length; i++) {
+      colecaoQuadradosDOM[i].style.backgroundColor = quadrado.esquemaDeCores[0];
+      colecaoQuadradosDOM[i].style.color = quadrado.esquemaDeCores[0];
+    }
 
   document.getElementById("jogador").innerHTML = "-";
   document.getElementById("jogador").style.color = "#000000";

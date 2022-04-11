@@ -187,4 +187,7 @@ function Reset() {
   document.getElementById("jogador").innerHTML = "-";
   document.getElementById("jogador").style.color = "#000000";
   document.getElementById("vencedor").innerHTML = "-";
+  document.getElementById("partida").innerHTML = 0;
+  document.getElementById("partida-impar-x").innerHTML = 0;
+  document.getElementById("partida-par-o").innerHTML = 0;
 }

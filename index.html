@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projeto Jogo da Velha | Bootcamp Órbi Web Games 👾</title>
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <h1>Jogo da Velha</h1>
+  <!-- primeira linha-->
+  <div>
+
+    <div id="1" class="quadrado" onclick="SelecionarQuadrado(this.id)">-</div>
+    <div id="2" class="quadrado" onclick="SelecionarQuadrado(this.id)">-</div>
+    <div id="3" class="quadrado" onclick="SelecionarQuadrado(this.id)">-</div>
+  </div>
+  <!-- segunda linha-->
+  <div>
+    <div id="4" class="quadrado" onclick="SelecionarQuadrado(this.id)">-</div>
+    <div id="5" class="quadrado" onclick="SelecionarQuadrado(this.id)">-</div>
+    <div id="6" class="quadrado" onclick="SelecionarQuadrado(this.id)">-</div>
+  </div>
+  <!-- terceira linha -->
+  <div>
+    <div id="7" class="quadrado" onclick="SelecionarQuadrado(this.id)">-</div>
+    <div id="8" class="quadrado" onclick="SelecionarQuadrado(this.id)">-</div>
+    <div id="9" class="quadrado" onclick="SelecionarQuadrado(this.id)">-</div>
+  </div>
+
+  <!-- info -->
+  <div class="detalhes">
+    <label>
+      Jogador:
+    </label>
+    <label id="jogador">-</label>
+    <label>
+      Vencedor:
+    </label>
+    <label id="vencedor">-</label>
+  </div>
+  <div>
+    <button onclick="Reset()">
+      Reiniciar
+    </button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

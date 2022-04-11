@@ -1,0 +1,37 @@
+body {
+  text-align: center;
+  background-color: #ffffff;
+  font-family:monospace;
+}
+
+.quadrado {
+  text-align: center;
+  width: 5%; 
+  background: #77BFA3;
+  display: inline-block;
+  padding: 40px;
+  font-size: 60px;
+  margin: 5px;
+  cursor: pointer;
+  color: #77BFA3;
+  border-radius: 5px;
+}
+
+.detalhes {
+  font-size: 25px;
+  margin-top: 10px;
+}
+
+button {
+  background-color: #68d89b;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+}
